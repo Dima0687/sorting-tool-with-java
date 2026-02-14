@@ -1,0 +1,1 @@
+rootProject.name = "sorting-tool-with-java"
