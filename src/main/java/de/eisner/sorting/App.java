@@ -9,7 +9,20 @@ import de.eisner.sorting.pipeline.Pipeline;
 
 import java.util.Optional;
 
+/**
+ * Entry point of the sorting application.
+ *
+ * <p>The application parses command-line arguments,
+ * creates the appropriate processing pipeline,
+ * and executes it using a newly created {@link Context}.
+ */
 public class App {
+
+    /**
+     * Application entry point.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         Optional<Config> optionalConfig = ArgumentParser.parse(args);
         if (optionalConfig.isEmpty()) return;

@@ -9,7 +9,22 @@ import de.eisner.sorting.pipeline.Step;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Pipeline step that aggregates raw input data
+ * into frequency-based result entries.
+ *
+ * <p>For each distinct element, a {@link Result}
+ * object is created containing occurrence count and percentage share.
+ *
+ * @param <T> the type of elements being processed
+ */
 public class FrequencyTransformer<T extends Comparable<T>> implements Step<T> {
+    /**
+     * Groups raw input elements by frequency and
+     * populates the result list inside the context.
+     *
+     * @param context the shared execution context
+     */
     @Override
     public void execute(Context<T> context) {
         Map<T, Long> frequency =

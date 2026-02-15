@@ -22,8 +22,29 @@ import java.util.List;
 
 import static de.eisner.sorting.pipeline.StepType.*;
 
+/**
+ * Factory class responsible for constructing a fully configured
+ * {@link de.eisner.sorting.pipeline.Pipeline} instance
+ * based on the provided {@link Config}.
+ *
+ * <p>The factory dynamically assembles the required processing steps
+ * depending on the selected data type and sorting strategy.
+ *
+ * <p>The typical pipeline flow consists of:
+ * INPUT → READ → (optional TRANSFORM) → SORT → OUTPUT
+ *
+ * <p>This class is not intended to be instantiated.
+ */
 public final class PipelineFactory {
 
+    /**
+     * Creates a new {@link de.eisner.sorting.pipeline.Pipeline}
+     * configured according to the given {@link Config}.
+     *
+     * @param config the application configuration
+     * @param <T>    the type of elements processed by the pipeline
+     * @return a fully constructed pipeline instance
+     */
     public static <T extends Comparable<T>> Pipeline<T> create(Config config) {
 
         EnumSet<StepType> flow = EnumSet.of(INPUT, READ, SORT, OUTPUT);

@@ -5,8 +5,18 @@ import de.eisner.sorting.pipeline.Step;
 
 import java.util.Scanner;
 
+/**
+ * Pipeline step that reads numeric values of type {@code long}.
+ *
+ * <p>Non-numeric tokens are skipped with a console warning.
+ */
 public class NumberReader implements Step<Long> {
 
+    /**
+     * Reads and parses numeric input values from the scanner.
+     *
+     * @param ctx the shared execution context
+     */
     @Override
     public void execute(Context<Long> ctx) {
         Scanner scanner = ctx.getScanner();

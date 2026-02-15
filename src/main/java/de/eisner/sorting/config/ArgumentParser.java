@@ -5,6 +5,27 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * Utility class responsible for parsing command-line arguments
+ * and converting them into a {@link Config} instance.
+ *
+ * <p>The parser supports the following parameters:
+ * <ul>
+ *     <li>-sortingType</li>
+ *     <li>-dataType</li>
+ *     <li>-inputFile</li>
+ *     <li>-outputFile</li>
+ * </ul>
+ *
+ * <p>Invalid parameters are ignored with a console warning.
+ * If a provided {@code dataType} or {@code sortingType} value is invalid,
+ * parsing fails and an empty {@link Optional} is returned.
+ *
+ * <p>If no {@code dataType} is specified, {@link DataType#WORD} is used as default.
+ * If no {@code sortingType} is specified, {@link SortType#NATURAL} is used as default.
+ *
+ * <p>This class cannot be instantiated.
+ */
 public class ArgumentParser {
     private static final Set<String> VALID_ARGS = Set.of(
             "sortingType",
@@ -16,6 +37,13 @@ public class ArgumentParser {
     private ArgumentParser() {
     }
 
+    /**
+     * Parses the given command-line arguments into a {@link Config} object.
+     *
+     * @param args the raw command-line arguments
+     * @return an {@link Optional} containing the resulting {@link Config},
+     *         or {@link Optional#empty()} if parsing fails due to invalid enum values
+     */
     public static Optional<Config> parse(String[] args) {
         Map<String, String> map = new HashMap<>();
 
