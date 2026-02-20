@@ -1,7 +1,7 @@
 
 <div align=center>
 
-# Chuck Norris Cipher Encoder
+# Sorting Tool with Java
 
 </div>
 
